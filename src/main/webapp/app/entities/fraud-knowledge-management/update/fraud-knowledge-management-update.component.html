@@ -1,0 +1,261 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-fraud-knowledge-management-heading"
+        data-cy="FraudKnowledgeManagementCreateUpdateHeading"
+        jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.home.createOrEditLabel"
+      >
+        Create or edit a Fraud Knowledge Management
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.reportNumber" for="field_reportNumber"
+            >Report Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="reportNumber"
+            id="field_reportNumber"
+            data-cy="reportNumber"
+            formControlName="reportNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.caseTitle" for="field_caseTitle"
+            >Case Title</label
+          >
+          <input type="text" class="form-control" name="caseTitle" id="field_caseTitle" data-cy="caseTitle" formControlName="caseTitle" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.fraudType" for="field_fraudType"
+            >Fraud Type</label
+          >
+          <input type="text" class="form-control" name="fraudType" id="field_fraudType" data-cy="fraudType" formControlName="fraudType" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.unit" for="field_unit">Unit</label>
+          <input type="text" class="form-control" name="unit" id="field_unit" data-cy="unit" formControlName="unit" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.incidentDate" for="field_incidentDate"
+            >Incident Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_incidentDate"
+              data-cy="incidentDate"
+              type="text"
+              class="form-control"
+              name="incidentDate"
+              ngbDatepicker
+              #incidentDateDp="ngbDatepicker"
+              formControlName="incidentDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="incidentDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.reportDate" for="field_reportDate"
+            >Report Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_reportDate"
+              data-cy="reportDate"
+              type="text"
+              class="form-control"
+              name="reportDate"
+              ngbDatepicker
+              #reportDateDp="ngbDatepicker"
+              formControlName="reportDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="reportDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.internalEmployee" for="field_internalEmployee"
+            >Internal Employee</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="internalEmployee"
+            id="field_internalEmployee"
+            data-cy="internalEmployee"
+            formControlName="internalEmployee"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.externalCustomer" for="field_externalCustomer"
+            >External Customer</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="externalCustomer"
+            id="field_externalCustomer"
+            data-cy="externalCustomer"
+            formControlName="externalCustomer"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.financialLossAmount"
+            for="field_financialLossAmount"
+            >Financial Loss Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="financialLossAmount"
+            id="field_financialLossAmount"
+            data-cy="financialLossAmount"
+            formControlName="financialLossAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.causeForAnIncident"
+            for="field_causeForAnIncident"
+            >Cause For An Incident</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="causeForAnIncident"
+            id="field_causeForAnIncident"
+            data-cy="causeForAnIncident"
+            formControlName="causeForAnIncident"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.effect" for="field_effect">Effect</label>
+          <input type="text" class="form-control" name="effect" id="field_effect" data-cy="effect" formControlName="effect" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.recommendationsDrawn"
+            for="field_recommendationsDrawn"
+            >Recommendations Drawn</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="recommendationsDrawn"
+            id="field_recommendationsDrawn"
+            data-cy="recommendationsDrawn"
+            formControlName="recommendationsDrawn"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.positionJG" for="field_positionJG"
+            >Position JG</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="positionJG"
+            id="field_positionJG"
+            data-cy="positionJG"
+            formControlName="positionJG"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.nameIdNo" for="field_nameIdNo"
+            >Name Id No</label
+          >
+          <input type="text" class="form-control" name="nameIdNo" id="field_nameIdNo" data-cy="nameIdNo" formControlName="nameIdNo" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.actionInvolved" for="field_actionInvolved"
+            >Action Involved</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="actionInvolved"
+            id="field_actionInvolved"
+            data-cy="actionInvolved"
+            formControlName="actionInvolved"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.ngScreenerReport" for="field_ngScreenerReport"
+            >Ng Screener Report</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="ngScreenerReport"
+            id="field_ngScreenerReport"
+            data-cy="ngScreenerReport"
+            formControlName="ngScreenerReport"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.statusAfterReporting"
+            for="field_statusAfterReporting"
+            >Status After Reporting</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="statusAfterReporting"
+            id="field_statusAfterReporting"
+            data-cy="statusAfterReporting"
+            formControlName="statusAfterReporting"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,197 @@
+<div>
+  <h2 id="page-heading" data-cy="FraudInvestigationReportHeading">
+    <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.home.title">Fraud Investigation Reports</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-fraud-investigation-report"
+        [routerLink]="['/fraud-investigation-report/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.home.createLabel"> Create a new Fraud Investigation Report </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="fraudInvestigationReports?.length === 0">
+    <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.home.notFound">No Fraud Investigation Reports found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="fraudInvestigationReports && fraudInvestigationReports.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="title">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.title">Title</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <!--<th scope="col" jhiSortBy="executiveSummary">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.executiveSummary">Executive Summary</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="introduction">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.introduction">Introduction</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="objective">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.objective">Objective</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="scope">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.scope">Scope</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="limitation">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.limitation">Limitation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="methodology">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.methodology">Methodology</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="findingAndAnalysis">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.findingAndAnalysis">Finding And Analysis</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="conclusion">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.conclusion">Conclusion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="recommendation">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.recommendation">Recommendation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>-->
+          <th scope="col" jhiSortBy="nameOfMembers">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.nameOfMembers">Name Of Members</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="signature">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.signature">Signature</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="annexes">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.annexes">Annexes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="author">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.author">Author</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fraudType.id">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.fraudType">Fraud Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody
+        infinite-scroll
+        (scrolled)="loadPage(page + 1)"
+        [infiniteScrollDisabled]="page - 1 >= links['last']"
+        [infiniteScrollDistance]="0"
+      >
+        <tr *ngFor="let fraudInvestigationReport of fraudInvestigationReports; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/fraud-investigation-report', fraudInvestigationReport.id, 'view']">{{ fraudInvestigationReport.id }}</a>
+          </td>
+          <td>{{ fraudInvestigationReport.title }}</td>
+          <!--<td>{{ fraudInvestigationReport.executiveSummary }}</td>
+          <td>{{ fraudInvestigationReport.introduction }}</td>
+          <td>{{ fraudInvestigationReport.objective }}</td>
+          <td>{{ fraudInvestigationReport.scope }}</td>
+          <td>{{ fraudInvestigationReport.limitation }}</td>
+          <td>{{ fraudInvestigationReport.methodology }}</td>
+          <td>{{ fraudInvestigationReport.findingAndAnalysis }}</td>
+          <td>{{ fraudInvestigationReport.conclusion }}</td>
+          <td>{{ fraudInvestigationReport.recommendation }}</td>-->
+          <td>{{ fraudInvestigationReport.nameOfMembers }}</td>
+          <td>{{ fraudInvestigationReport.signature }}</td>
+          <td>{{ fraudInvestigationReport.annexes }}</td>
+          <td>{{ fraudInvestigationReport.author }}</td>
+          <td>
+            <div *ngIf="fraudInvestigationReport.fraudType">
+              <a [routerLink]="['/fraud-knowledge-management', fraudInvestigationReport.fraudType.id, 'view']">{{
+                fraudInvestigationReport.fraudType.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/fraud-investigation-report', fraudInvestigationReport.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/fraud-investigation-report', fraudInvestigationReport.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(fraudInvestigationReport)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

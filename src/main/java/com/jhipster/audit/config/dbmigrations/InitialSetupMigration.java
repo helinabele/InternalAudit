@@ -89,4 +89,15 @@ public class InitialSetupMigration {
         adminUser.getAuthorities().add(userAuthority);
         return adminUser;
     }
+
+    public void addAuthorities(MongoTemplate mongoTemplate) {
+        // Add these lines after the existing, auto-generated code
+        Authority managerAuthority = new Authority();
+        managerAuthority.setName(AuthoritiesConstants.MANAGER);
+        mongoTemplate.save(managerAuthority);
+
+        Authority auditorAuthority = new Authority();
+        auditorAuthority.setName(AuthoritiesConstants.AUDITOR);
+        mongoTemplate.save(auditorAuthority);
+    }
 }

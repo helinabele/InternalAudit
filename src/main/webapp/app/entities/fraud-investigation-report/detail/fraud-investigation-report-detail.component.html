@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="fraudInvestigationReport">
+      <h2 data-cy="fraudInvestigationReportDetailsHeading">
+        <span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.detail.title">Fraud Investigation Report</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.title">Title</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.executiveSummary">Executive Summary</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.executiveSummary }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.introduction">Introduction</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.introduction }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.objective">Objective</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.objective }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.scope">Scope</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.scope }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.limitation">Limitation</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.limitation }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.methodology">Methodology</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.methodology }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.findingAndAnalysis">Finding And Analysis</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.findingAndAnalysis }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.conclusion">Conclusion</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.conclusion }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.recommendation">Recommendation</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.recommendation }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.nameOfMembers">Name Of Members</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.nameOfMembers }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.signature">Signature</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.signature }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.annexes">Annexes</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.annexes }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.author">Author</span></dt>
+        <dd>
+          <span>{{ fraudInvestigationReport.author }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.fraudInvestigationReport.fraudType">Fraud Type</span></dt>
+        <dd>
+          <div *ngIf="fraudInvestigationReport.fraudType">
+            <a [routerLink]="['/fraud-knowledge-management', fraudInvestigationReport.fraudType.id, 'view']">{{
+              fraudInvestigationReport.fraudType.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/fraud-investigation-report', fraudInvestigationReport.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

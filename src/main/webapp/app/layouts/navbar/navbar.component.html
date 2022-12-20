@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
       <span class="logo-img"></span>
-      <span jhiTranslate="global.title" class="navbar-title">AuditjHipster</span>
-      <span class="navbar-version">{{ version }}</span>
+      <span jhiTranslate="global.title" class="navbar-title">Audit Management</span>
+      <!--<span class="navbar-version">{{ version }}</span>-->
     </a>
     <a
       class="navbar-toggler d-lg-none"
@@ -27,6 +27,34 @@
             </span>
           </a>
         </li>
+        <!--      <li>
+         <a class="dropdown-item" routerLink="fraud-investigation-report" routerLinkActive="active"-->
+        <!--            [routerLinkActiveOptions]="{ exact: true }"-->
+        <!--            (click)="collapseNavbar()">-->
+        <li *jhiHasAnyAuthority="'ROLE_AUDITOR'" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="fraud-investigation-report" (click)="collapseNavbar()">
+            <span>
+              <fa-icon icon="asterisk"></fa-icon>
+              <span jhiTranslate="global.menu.entities.fraudInvestigationReport">Fraud Investigation Report</span>
+            </span>
+          </a>
+        </li>
+        <!--    <li>
+        <a-->
+        <!--            class="dropdown-item"-->
+        <!--            routerLink="fraud-knowledge-management"-->
+        <!--            routerLinkActive="active"-->
+        <!--            [routerLinkActiveOptions]="{ exact: true }"-->
+        <!--            (click)="collapseNavbar()"-->
+        <!--          >-->
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" *jhiHasAnyAuthority="'AUDITOR'">
+          <a class="nav-link" routerLink="fraud-knowledge-management" (click)="collapseNavbar()">
+            <span>
+              <fa-icon icon="asterisk"></fa-icon>
+              <span jhiTranslate="global.menu.entities.fraudKnowledgeManagement">Fraud Knowledge Management</span>
+            </span>
+          </a>
+        </li>
         <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
         <li
           *ngSwitchCase="true"
@@ -39,13 +67,137 @@
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
             <span>
               <fa-icon icon="th-list"></fa-icon>
-              <span jhiTranslate="global.menu.entities.main">Entities</span>
+              <span jhiTranslate="global.menu.entities.main">Setting</span>
             </span>
           </a>
+
           <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="userprofile"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.userprofile">Userprofile</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="region"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.region">Region</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="branch"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.branch">Branch</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="department"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.department">Department</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLink="division"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.division">Division</span>
+              </a>
+            </li>
+            <!--<li>
+              <a
+                class="dropdown-item"
+                routerLink="report"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.report">Report</span>
+              </a>
+            </li>-->
+            <!-- <li>
+              <a
+                class="dropdown-item"
+                routerLink="fraud-investigation-report"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.fraudInvestigationReport">Fraud Investigation Report</span>
+              </a>
+            </li>-->
+            <!--<li>
+              <a
+                class="dropdown-item"
+                routerLink="fraud-knowledge-management"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="collapseNavbar()"
+              >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.fraudKnowledgeManagement">Fraud Knowledge Management</span>
+              </a>
+            </li>-->
             <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
           </ul>
         </li>
+
+        <li
+          *ngSwitchCase="true"
+          ngbDropdown
+          class="nav-item dropdown pointer"
+          display="dynamic"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="report-menu" data-cy="entity">
+            <span>
+              <fa-icon icon="th-list"></fa-icon>
+              <span>Reports</span>
+            </span>
+          </a>
+
+          <!--<ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+            <li>
+              <a class="dropdown-item" routerLink="userprofile"
+                routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()" >
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.userprofile">Userprofile</span>
+              </a>
+            </li>
+          </ul>-->
+        </li>
+
         <li
           *jhiHasAnyAuthority="'ROLE_ADMIN'"
           ngbDropdown
