@@ -1,0 +1,164 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-report-heading" data-cy="ReportCreateUpdateHeading" jhiTranslate="auditjHipsterApp.report.home.createOrEditLabel">
+        Create or edit a Report
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.title" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.executiveSummary" for="field_executiveSummary"
+            >Executive Summary</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="executiveSummary"
+            id="field_executiveSummary"
+            data-cy="executiveSummary"
+            formControlName="executiveSummary"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.introduction" for="field_introduction">Introduction</label>
+          <input
+            type="text"
+            class="form-control"
+            name="introduction"
+            id="field_introduction"
+            data-cy="introduction"
+            formControlName="introduction"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.objective" for="field_objective">Objective</label>
+          <input type="text" class="form-control" name="objective" id="field_objective" data-cy="objective" formControlName="objective" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.scope" for="field_scope">Scope</label>
+          <input type="text" class="form-control" name="scope" id="field_scope" data-cy="scope" formControlName="scope" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.limitation" for="field_limitation">Limitation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="limitation"
+            id="field_limitation"
+            data-cy="limitation"
+            formControlName="limitation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.methodology" for="field_methodology">Methodology</label>
+          <input
+            type="text"
+            class="form-control"
+            name="methodology"
+            id="field_methodology"
+            data-cy="methodology"
+            formControlName="methodology"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.findingAndAnalysis" for="field_findingAndAnalysis"
+            >Finding And Analysis</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="findingAndAnalysis"
+            id="field_findingAndAnalysis"
+            data-cy="findingAndAnalysis"
+            formControlName="findingAndAnalysis"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.conclusion" for="field_conclusion">Conclusion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="conclusion"
+            id="field_conclusion"
+            data-cy="conclusion"
+            formControlName="conclusion"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.recommendation" for="field_recommendation">Recommendation</label>
+          <input
+            type="text"
+            class="form-control"
+            name="recommendation"
+            id="field_recommendation"
+            data-cy="recommendation"
+            formControlName="recommendation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.nameOfMembers" for="field_nameOfMembers">Name Of Members</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nameOfMembers"
+            id="field_nameOfMembers"
+            data-cy="nameOfMembers"
+            formControlName="nameOfMembers"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.signature" for="field_signature">Signature</label>
+          <input type="text" class="form-control" name="signature" id="field_signature" data-cy="signature" formControlName="signature" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.annexes" for="field_annexes">Annexes</label>
+          <input type="text" class="form-control" name="annexes" id="field_annexes" data-cy="annexes" formControlName="annexes" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="auditjHipsterApp.report.author" for="field_author">Author</label>
+          <input type="text" class="form-control" name="author" id="field_author" data-cy="author" formControlName="author" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

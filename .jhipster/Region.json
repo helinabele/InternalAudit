@@ -1,0 +1,42 @@
+{
+  "applications": "*",
+  "changelogDate": "20221022112327",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "region",
+  "fields": [
+    {
+      "fieldName": "regionName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "regionId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Region",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "branch",
+      "otherEntityRelationshipName": "region",
+      "relationshipName": "branch",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "regionId",
+      "otherEntityName": "userprofile",
+      "otherEntityRelationshipName": "userprofileRegion",
+      "relationshipName": "userproifle",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

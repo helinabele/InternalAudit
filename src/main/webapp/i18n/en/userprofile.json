@@ -1,0 +1,32 @@
+{
+  "auditjHipsterApp": {
+    "userprofile": {
+      "home": {
+        "title": "Userprofiles",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Userprofile",
+        "createOrEditLabel": "Create or edit a Userprofile",
+        "notFound": "No Userprofiles found"
+      },
+      "created": "A new Userprofile is created with identifier {{ param }}",
+      "updated": "A Userprofile is updated with identifier {{ param }}",
+      "deleted": "A Userprofile is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Userprofile {{ id }}?"
+      },
+      "detail": {
+        "title": "Userprofile"
+      },
+      "id": "ID",
+      "regionId": "Region Id",
+      "branchId": "Branch Id",
+      "departmentId": "Department Id",
+      "divisionId": "Division Id",
+      "userStatus": "User Status",
+      "userprofileRegion": "Userprofile Region",
+      "userProfileDepartment": "User Profile Department",
+      "userProfileBranch": "User Profile Branch",
+      "userProfileDivision": "User Profile Division"
+    }
+  }
+}

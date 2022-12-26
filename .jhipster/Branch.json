@@ -1,0 +1,49 @@
+{
+  "applications": "*",
+  "changelogDate": "20221022112328",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "branch",
+  "fields": [
+    {
+      "fieldName": "branchName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "branchId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Branch",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "department",
+      "otherEntityRelationshipName": "branch",
+      "relationshipName": "department",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "branchId",
+      "otherEntityName": "userprofile",
+      "otherEntityRelationshipName": "userProfileBranch",
+      "relationshipName": "userproifle",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "regionName",
+      "otherEntityName": "region",
+      "otherEntityRelationshipName": "branch",
+      "relationshipName": "region",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}
