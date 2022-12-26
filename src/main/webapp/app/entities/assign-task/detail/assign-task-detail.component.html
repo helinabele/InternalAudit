@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="assignTask">
+      <h2 data-cy="assignTaskDetailsHeading"><span jhiTranslate="auditjHipsterApp.assignTask.detail.title">Assign Task</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ assignTask.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.assignTask.title">Title</span></dt>
+        <dd>
+          <span>{{ assignTask.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.assignTask.assignedPerson">Assigned Person</span></dt>
+        <dd>
+          <span>{{ assignTask.assignedPerson }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.assignTask.taskAssignmentDate">Task Assignment Date</span></dt>
+        <dd>
+          <span>{{ assignTask.taskAssignmentDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.assignTask.taskStartDate">Task Start Date</span></dt>
+        <dd>
+          <span>{{ assignTask.taskStartDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.assignTask.taskDueDate">Task Due Date</span></dt>
+        <dd>
+          <span>{{ assignTask.taskDueDate | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/assign-task', assignTask.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

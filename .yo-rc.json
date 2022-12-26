@@ -27,14 +27,16 @@
       "Division",
       "Report",
       "FraudInvestigationReport",
-      "FraudKnowledgeManagement"
+      "FraudKnowledgeManagement",
+      "Task",
+      "AssignTask"
     ],
     "entitySuffix": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "7.9.3",
     "jwtSecretKey": "NTBiZGJkOWY1MzYyYjdlMWU0OGI3Y2YzYzQ2NjExMGNhNzY2OTFlM2IyY2Q1NWYxZDk2ZTc4YmU4MmQwOGQyYmQ5MzM3NTk2NzY1M2YxOTI2MjVlNjA3MzVhOGVhOTYxOTVlOGUwMGVhODg1ZDNhYTYzNTdjNDJiZmEyMWIxYTM=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1671174583000,
+    "lastLiquibaseTimestamp": 1672057370000,
     "messageBroker": false,
     "microfrontend": false,
     "microfrontends": [],

@@ -1,0 +1,45 @@
+{
+  "applications": "*",
+  "changelogDate": "20221226122250",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "assign_task",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "assignedPerson",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "taskAssignmentDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "taskStartDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "taskDueDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AssignTask",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "task",
+      "otherEntityRelationshipName": "assignTask",
+      "ownerSide": false,
+      "relationshipName": "task",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

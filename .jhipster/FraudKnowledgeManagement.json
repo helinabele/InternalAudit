@@ -11,7 +11,8 @@
     },
     {
       "fieldName": "caseTitle",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "fraudType",
@@ -82,7 +83,7 @@
   "relationships": [
     {
       "otherEntityName": "fraudInvestigationReport",
-      "otherEntityRelationshipName": "fraudType",
+      "otherEntityRelationshipName": "type",
       "relationshipName": "fraudInvestigationReport",
       "relationshipType": "one-to-many"
     }
