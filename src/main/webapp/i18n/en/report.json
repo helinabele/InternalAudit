@@ -1,0 +1,37 @@
+{
+  "auditjHipsterApp": {
+    "report": {
+      "home": {
+        "title": "Reports",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Report",
+        "createOrEditLabel": "Create or edit a Report",
+        "notFound": "No Reports found"
+      },
+      "created": "A new Report is created with identifier {{ param }}",
+      "updated": "A Report is updated with identifier {{ param }}",
+      "deleted": "A Report is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Report {{ id }}?"
+      },
+      "detail": {
+        "title": "Report"
+      },
+      "id": "ID",
+      "title": "Title",
+      "executiveSummary": "Executive Summary",
+      "introduction": "Introduction",
+      "objective": "Objective",
+      "scope": "Scope",
+      "limitation": "Limitation",
+      "methodology": "Methodology",
+      "findingAndAnalysis": "Finding And Analysis",
+      "conclusion": "Conclusion",
+      "recommendation": "Recommendation",
+      "nameOfMembers": "Name Of Members",
+      "signature": "Signature",
+      "annexes": "Annexes",
+      "author": "Author"
+    }
+  }
+}

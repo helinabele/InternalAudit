@@ -1,0 +1,42 @@
+{
+  "applications": "*",
+  "changelogDate": "20221022112330",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "division",
+  "fields": [
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "divisionId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "divisionName",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Division",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "divisionId",
+      "otherEntityName": "userprofile",
+      "otherEntityRelationshipName": "userProfileDivision",
+      "relationshipName": "userproifle",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "department",
+      "otherEntityRelationshipName": "division",
+      "relationshipName": "department",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

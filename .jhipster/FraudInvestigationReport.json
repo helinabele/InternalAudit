@@ -1,0 +1,81 @@
+{
+  "applications": "*",
+  "changelogDate": "20221216070942",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "fraud_investigation_report",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "executiveSummary",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "introduction",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "objective",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "scope",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "limitation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "methodology",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "findingAndAnalysis",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "conclusion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "recommendation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nameOfMembers",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "signature",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "annexes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "author",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "FraudInvestigationReport",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "fraudType",
+      "otherEntityName": "fraudKnowledgeManagement",
+      "otherEntityRelationshipName": "fraudInvestigationReport",
+      "relationshipName": "type",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

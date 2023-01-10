@@ -1,0 +1,49 @@
+{
+  "applications": "*",
+  "changelogDate": "20221022112329",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "department",
+  "fields": [
+    {
+      "fieldName": "departmentName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "departmentId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Department",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "division",
+      "otherEntityRelationshipName": "department",
+      "relationshipName": "division",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "departmentId",
+      "otherEntityName": "userprofile",
+      "otherEntityRelationshipName": "userProfileDepartment",
+      "relationshipName": "userproifle",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "branch",
+      "otherEntityRelationshipName": "department",
+      "relationshipName": "branch",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

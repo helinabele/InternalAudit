@@ -1,0 +1,174 @@
+<div>
+  <h2 id="page-heading" data-cy="ReportHeading">
+    <span jhiTranslate="auditjHipsterApp.report.home.title">Reports</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="auditjHipsterApp.report.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-report"
+        [routerLink]="['/report/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="auditjHipsterApp.report.home.createLabel"> Create a new Report </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="reports?.length === 0">
+    <span jhiTranslate="auditjHipsterApp.report.home.notFound">No Reports found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="reports && reports.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="title">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.title">Title</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="executiveSummary">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.executiveSummary">Executive Summary</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="introduction">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.introduction">Introduction</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="objective">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.objective">Objective</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="scope">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.scope">Scope</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="limitation">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.limitation">Limitation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="methodology">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.methodology">Methodology</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="findingAndAnalysis">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.findingAndAnalysis">Finding And Analysis</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="conclusion">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.conclusion">Conclusion</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="recommendation">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.recommendation">Recommendation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nameOfMembers">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.nameOfMembers">Name Of Members</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="signature">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.signature">Signature</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="annexes">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.annexes">Annexes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="author">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.report.author">Author</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody
+        infinite-scroll
+        (scrolled)="loadPage(page + 1)"
+        [infiniteScrollDisabled]="page - 1 >= links['last']"
+        [infiniteScrollDistance]="0"
+      >
+        <tr *ngFor="let report of reports; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/report', report.id, 'view']">{{ report.id }}</a>
+          </td>
+          <td>{{ report.title }}</td>
+          <td>{{ report.executiveSummary }}</td>
+          <td>{{ report.introduction }}</td>
+          <td>{{ report.objective }}</td>
+          <td>{{ report.scope }}</td>
+          <td>{{ report.limitation }}</td>
+          <td>{{ report.methodology }}</td>
+          <td>{{ report.findingAndAnalysis }}</td>
+          <td>{{ report.conclusion }}</td>
+          <td>{{ report.recommendation }}</td>
+          <td>{{ report.nameOfMembers }}</td>
+          <td>{{ report.signature }}</td>
+          <td>{{ report.annexes }}</td>
+          <td>{{ report.author }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/report', report.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/report', report.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(report)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

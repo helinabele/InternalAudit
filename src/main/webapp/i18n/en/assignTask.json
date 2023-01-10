@@ -1,0 +1,29 @@
+{
+  "auditjHipsterApp": {
+    "assignTask": {
+      "home": {
+        "title": "Assign Tasks",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Assign Task",
+        "createOrEditLabel": "Create or edit a Assign Task",
+        "notFound": "No Assign Tasks found"
+      },
+      "created": "A new Assign Task is created with identifier {{ param }}",
+      "updated": "A Assign Task is updated with identifier {{ param }}",
+      "deleted": "A Assign Task is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Assign Task {{ id }}?"
+      },
+      "detail": {
+        "title": "Assign Task"
+      },
+      "id": "ID",
+      "title": "Title",
+      "assignedPerson": "Assigned Person",
+      "taskAssignmentDate": "Task Assignment Date",
+      "taskStartDate": "Task Start Date",
+      "taskDueDate": "Task Due Date",
+      "task": "Task"
+    }
+  }
+}

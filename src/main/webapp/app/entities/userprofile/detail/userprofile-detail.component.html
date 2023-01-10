@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userprofile">
+      <h2 data-cy="userprofileDetailsHeading"><span jhiTranslate="auditjHipsterApp.userprofile.detail.title">Userprofile</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userprofile.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.userprofile.regionId">Region Id</span></dt>
+        <dd>
+          <span>{{ userprofile.regionId }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.userprofile.branchId">Branch Id</span></dt>
+        <dd>
+          <span>{{ userprofile.branchId }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.userprofile.departmentId">Department Id</span></dt>
+        <dd>
+          <span>{{ userprofile.departmentId }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.userprofile.divisionId">Division Id</span></dt>
+        <dd>
+          <span>{{ userprofile.divisionId }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.userprofile.userStatus">User Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'auditjHipsterApp.UserStatus.' + userprofile.userStatus }}">{{ userprofile.userStatus }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/userprofile', userprofile.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,200 @@
+<div>
+  <h2 id="page-heading" data-cy="FraudKnowledgeManagementHeading">
+    <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.home.title">Fraud Knowledge Managements</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-fraud-knowledge-management"
+        [routerLink]="['/fraud-knowledge-management/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.home.createLabel"> Create a new Fraud Knowledge Management </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="fraudKnowledgeManagements?.length === 0">
+    <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.home.notFound">No Fraud Knowledge Managements found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="fraudKnowledgeManagements && fraudKnowledgeManagements.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="reportNumber">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.reportNumber">Report Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="caseTitle">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.caseTitle">Case Title</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fraudType">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.fraudType">Fraud Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="unit">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.unit">Unit</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="incidentDate">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.incidentDate">Incident Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="reportDate">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.reportDate">Report Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="internalEmployee">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.internalEmployee">Internal Employee</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="externalCustomer">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.externalCustomer">External Customer</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="financialLossAmount">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.financialLossAmount">Financial Loss Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="causeForAnIncident">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.causeForAnIncident">Cause For An Incident</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="effect">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.effect">Effect</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="recommendationsDrawn">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.recommendationsDrawn">Recommendations Drawn</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="positionJG">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.positionJG">Position JG</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nameIdNo">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.nameIdNo">Name Id No</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="actionInvolved">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.actionInvolved">Action Involved</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ngScreenerReport">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.ngScreenerReport">Ng Screener Report</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="statusAfterReporting">
+            <div class="d-flex">
+              <span jhiTranslate="auditjHipsterApp.fraudKnowledgeManagement.statusAfterReporting">Status After Reporting</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fraudKnowledgeManagement of fraudKnowledgeManagements; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/fraud-knowledge-management', fraudKnowledgeManagement.id, 'view']">{{ fraudKnowledgeManagement.id }}</a>
+          </td>
+          <td>{{ fraudKnowledgeManagement.reportNumber }}</td>
+          <td>{{ fraudKnowledgeManagement.caseTitle }}</td>
+          <td>{{ fraudKnowledgeManagement.fraudType }}</td>
+          <td>{{ fraudKnowledgeManagement.unit }}</td>
+          <td>{{ fraudKnowledgeManagement.incidentDate | formatMediumDate }}</td>
+          <td>{{ fraudKnowledgeManagement.reportDate | formatMediumDate }}</td>
+          <td>{{ fraudKnowledgeManagement.internalEmployee }}</td>
+          <td>{{ fraudKnowledgeManagement.externalCustomer }}</td>
+          <td>{{ fraudKnowledgeManagement.financialLossAmount }}</td>
+          <td>{{ fraudKnowledgeManagement.causeForAnIncident }}</td>
+          <td>{{ fraudKnowledgeManagement.effect }}</td>
+          <td>{{ fraudKnowledgeManagement.recommendationsDrawn }}</td>
+          <td>{{ fraudKnowledgeManagement.positionJG }}</td>
+          <td>{{ fraudKnowledgeManagement.nameIdNo }}</td>
+          <td>{{ fraudKnowledgeManagement.actionInvolved }}</td>
+          <td>{{ fraudKnowledgeManagement.ngScreenerReport }}</td>
+          <td>{{ fraudKnowledgeManagement.statusAfterReporting }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/fraud-knowledge-management', fraudKnowledgeManagement.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/fraud-knowledge-management', fraudKnowledgeManagement.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(fraudKnowledgeManagement)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

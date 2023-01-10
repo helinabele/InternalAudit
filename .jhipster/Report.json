@@ -1,0 +1,72 @@
+{
+  "applications": "*",
+  "changelogDate": "20221026074845",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "report",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "executiveSummary",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "introduction",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "objective",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "scope",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "limitation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "methodology",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "findingAndAnalysis",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "conclusion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "recommendation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nameOfMembers",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "signature",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "annexes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "author",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Report",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

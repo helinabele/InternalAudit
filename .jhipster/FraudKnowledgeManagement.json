@@ -1,0 +1,92 @@
+{
+  "applications": "*",
+  "changelogDate": "20221216070943",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "fraud_knowledge_management",
+  "fields": [
+    {
+      "fieldName": "reportNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "caseTitle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fraudType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unit",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "incidentDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "reportDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "internalEmployee",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "externalCustomer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "financialLossAmount",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "causeForAnIncident",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "effect",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "recommendationsDrawn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "positionJG",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nameIdNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "actionInvolved",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ngScreenerReport",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statusAfterReporting",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "FraudKnowledgeManagement",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "fraudInvestigationReport",
+      "otherEntityRelationshipName": "type",
+      "relationshipName": "fraudInvestigationReport",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

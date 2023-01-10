@@ -1,0 +1,41 @@
+{
+  "auditjHipsterApp": {
+    "fraudKnowledgeManagement": {
+      "home": {
+        "title": "Fraud Knowledge Managements",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Fraud Knowledge Management",
+        "createOrEditLabel": "Create or edit a Fraud Knowledge Management",
+        "notFound": "No Fraud Knowledge Managements found"
+      },
+      "created": "A new Fraud Knowledge Management is created with identifier {{ param }}",
+      "updated": "A Fraud Knowledge Management is updated with identifier {{ param }}",
+      "deleted": "A Fraud Knowledge Management is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Fraud Knowledge Management {{ id }}?"
+      },
+      "detail": {
+        "title": "Fraud Knowledge Management"
+      },
+      "id": "ID",
+      "reportNumber": "Report Number",
+      "caseTitle": "Case Title",
+      "fraudType": "Fraud Type",
+      "unit": "Unit",
+      "incidentDate": "Incident Date",
+      "reportDate": "Report Date",
+      "internalEmployee": "Internal Employee",
+      "externalCustomer": "External Customer",
+      "financialLossAmount": "Financial Loss Amount",
+      "causeForAnIncident": "Cause For An Incident",
+      "effect": "Effect",
+      "recommendationsDrawn": "Recommendations Drawn",
+      "positionJG": "Position JG",
+      "nameIdNo": "Name Id No",
+      "actionInvolved": "Action Involved",
+      "ngScreenerReport": "Ng Screener Report",
+      "statusAfterReporting": "Status After Reporting",
+      "fraudInvestigationReport": "Fraud Investigation Report"
+    }
+  }
+}

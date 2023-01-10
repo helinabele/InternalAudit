@@ -1,0 +1,62 @@
+{
+  "applications": "*",
+  "changelogDate": "20221022112326",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "userprofile",
+  "fields": [
+    {
+      "fieldName": "regionId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "branchId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "departmentId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "divisionId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "userStatus",
+      "fieldType": "UserStatus",
+      "fieldValues": "SPRING,SUMMER,AUTUMN,WINTER"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Userprofile",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "region",
+      "otherEntityRelationshipName": "userproifle",
+      "relationshipName": "userprofileRegion",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "department",
+      "otherEntityRelationshipName": "userproifle",
+      "relationshipName": "userProfileDepartment",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "branch",
+      "otherEntityRelationshipName": "userproifle",
+      "relationshipName": "userProfileBranch",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "division",
+      "otherEntityRelationshipName": "userproifle",
+      "relationshipName": "userProfileDivision",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

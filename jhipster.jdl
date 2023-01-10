@@ -1,0 +1,110 @@
+entity FraudInvestigationReport {
+	title String required
+    executiveSummary String
+    introduction String
+    objective String
+    scope String
+    limitation String
+    methodology String
+    findingAndAnalysis String
+    conclusion String
+    recommendation String
+    nameOfMembers String
+    signature String
+    annexes String
+	//publicationDate ZonedDateTime,
+    author String
+}
+entity Task{
+	title String required
+	description String
+}
+entity AssignTask{
+	title String required
+	assignedPerson String
+	taskAssignmentDate LocalDate
+	taskStartDate LocalDate
+	taskDueDate LocalDate
+}
+entity FraudKnowledgeManagement{
+	reportNumber Integer
+	caseTitle String required
+	fraudType String
+	unit String
+	incidentDate LocalDate
+	reportDate LocalDate
+	internalEmployee String
+	externalCustomer String
+	financialLossAmount Float
+	causeForAnIncident String
+	effect String
+	recommendationsDrawn String
+	positionJG String
+	nameIdNo String
+	actionInvolved String
+	ngScreenerReport String
+	statusAfterReporting String
+}
+entity User {
+	firstName String,
+	lastName String,
+	email String,
+	phoneNumber Integer
+}
+entity Userprofile {
+	regionId Integer,
+	branchId Integer,
+	departmentId Integer,
+	divisionId Integer,
+	userStatus UserStatus
+}
+enum UserStatus {
+	SPRING, SUMMER, AUTUMN, WINTER
+}
+entity Region {
+	regionName String,
+	regionId Integer,
+    description String
+}
+entity Branch {
+	branchName String,
+	branchId Integer,
+	description String
+}
+entity Department {
+	departmentName String required,
+	departmentId Integer,
+    description String
+}
+entity Division {
+	description String,
+	divisionId Integer,
+	divisionName String
+}
+relationship OneToOne {
+	Task{AssignTask(title)} to AssignTask{Task}
+}
+relationship OneToMany {
+	Userprofile{UserprofileRegion} to Region{Userproifle(regionId)}
+	Userprofile{UserProfileDepartment} to Department{Userproifle(departmentId)}
+    Userprofile{UserProfileBranch} to Branch{Userproifle(branchId)}
+    Userprofile{UserProfileDivision} to Division{Userproifle(divisionId)}
+	Region{branch} to Branch{region(regionName)} , Branch to Department
+	Department to Division
+	FraudKnowledgeManagement to FraudInvestigationReport {type(fraudType)}
+}
+/**
+ * Many to many relationship.
+ */
+// relationship ManyToMany {
+// 	FraudInvestigationReport to FraudKnowledgeManagement
+// }
+// relationship ManyToMany{
+//     Report to User
+// }
+// relationship OneToMany{
+// 	User{report} to Report
+// }
+paginate FraudInvestigationReport with infinite-scroll
+paginate Department with pagination
+service all with serviceImpl except Department

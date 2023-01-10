@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="report">
+      <h2 data-cy="reportDetailsHeading"><span jhiTranslate="auditjHipsterApp.report.detail.title">Report</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ report.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.title">Title</span></dt>
+        <dd>
+          <span>{{ report.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.executiveSummary">Executive Summary</span></dt>
+        <dd>
+          <span>{{ report.executiveSummary }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.introduction">Introduction</span></dt>
+        <dd>
+          <span>{{ report.introduction }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.objective">Objective</span></dt>
+        <dd>
+          <span>{{ report.objective }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.scope">Scope</span></dt>
+        <dd>
+          <span>{{ report.scope }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.limitation">Limitation</span></dt>
+        <dd>
+          <span>{{ report.limitation }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.methodology">Methodology</span></dt>
+        <dd>
+          <span>{{ report.methodology }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.findingAndAnalysis">Finding And Analysis</span></dt>
+        <dd>
+          <span>{{ report.findingAndAnalysis }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.conclusion">Conclusion</span></dt>
+        <dd>
+          <span>{{ report.conclusion }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.recommendation">Recommendation</span></dt>
+        <dd>
+          <span>{{ report.recommendation }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.nameOfMembers">Name Of Members</span></dt>
+        <dd>
+          <span>{{ report.nameOfMembers }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.signature">Signature</span></dt>
+        <dd>
+          <span>{{ report.signature }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.annexes">Annexes</span></dt>
+        <dd>
+          <span>{{ report.annexes }}</span>
+        </dd>
+        <dt><span jhiTranslate="auditjHipsterApp.report.author">Author</span></dt>
+        <dd>
+          <span>{{ report.author }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/report', report.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
