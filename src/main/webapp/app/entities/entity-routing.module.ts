@@ -46,6 +46,16 @@ import { RouterModule } from '@angular/router';
         loadChildren: () =>
           import('./fraud-knowledge-management/fraud-knowledge-management.module').then(m => m.FraudKnowledgeManagementModule),
       },
+      {
+        path: 'task',
+        data: { pageTitle: 'auditjHipsterApp.task.home.title' },
+        loadChildren: () => import('./task/task.module').then(m => m.TaskModule),
+      },
+      {
+        path: 'assign-task',
+        data: { pageTitle: 'auditjHipsterApp.asignTask.home.title' },
+        loadChildren: () => import('./assign-task/assign-task.module').then(m => m.AssignTaskModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

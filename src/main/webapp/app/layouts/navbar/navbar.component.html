@@ -31,6 +31,16 @@
          <a class="dropdown-item" routerLink="fraud-investigation-report" routerLinkActive="active"-->
         <!--            [routerLinkActiveOptions]="{ exact: true }"-->
         <!--            (click)="collapseNavbar()">-->
+
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="task" (click)="collapseNavbar()">
+            <span>
+              <fa-icon icon="asterisk"></fa-icon>
+              <span jhiTranslate="global.menu.entities.task">Task</span>
+            </span>
+          </a>
+        </li>
+
         <li *jhiHasAnyAuthority="'ROLE_AUDITOR'" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="fraud-investigation-report" (click)="collapseNavbar()">
             <span>

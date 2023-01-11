@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -13,6 +13,7 @@ import { AssignTaskService } from '../service/assign-task.service';
   templateUrl: './assign-task-update.component.html',
 })
 export class AssignTaskUpdateComponent implements OnInit {
+  @Input() tasks = [];
   isSaving = false;
   assignTask: IAssignTask | null = null;
 
