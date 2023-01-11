@@ -15,7 +15,8 @@
         "report": "Report",
         "fraudInvestigationReport": "Fraud Investigation Report",
         "fraudKnowledgeManagement": "Fraud Knowledge Management",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "task": "Task"
       },
       "account": {
         "main": "Account",
@@ -106,7 +107,8 @@
       "open": "Open",
       "save": "Save",
       "view": "View",
-      "show": "Show {{otherEntity}}"
+      "show": "Show {{otherEntity}}",
+      "assignTask": "Assign"
     },
     "detail": {
       "field": "Field",
