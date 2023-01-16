@@ -1,38 +1,41 @@
+entity Task{
+	title String required
+	status TaskStatus
+	description String
+}
+enum TaskStatus {
+	ASSIGNED, NOT_ASSIGNED
+}
+entity AssignTask{
+	taskAssignmentDate Instant
+	taskStartDate Instant
+	taskEndDate Instant
+	description String
+}
 entity FraudInvestigationReport {
 	title String required
     executiveSummary String
-    introduction String
-    objective String
+    introduction String required
+    objective String required
     scope String
     limitation String
-    methodology String
+    methodology String required
     findingAndAnalysis String
     conclusion String
     recommendation String
     nameOfMembers String
     signature String
-    annexes String
+    annexes Blob
 	//publicationDate ZonedDateTime,
     author String
-}
-entity Task{
-	title String required
-	description String
-}
-entity AssignTask{
-	title String required
-	assignedPerson String
-	taskAssignmentDate LocalDate
-	taskStartDate LocalDate
-	taskDueDate LocalDate
 }
 entity FraudKnowledgeManagement{
 	reportNumber Integer
 	caseTitle String required
 	fraudType String
 	unit String
-	incidentDate LocalDate
-	reportDate LocalDate
+	incidentDate Instant
+	reportDate Instant
 	internalEmployee String
 	externalCustomer String
 	financialLossAmount Float
@@ -45,63 +48,52 @@ entity FraudKnowledgeManagement{
 	ngScreenerReport String
 	statusAfterReporting String
 }
-entity User {
-	firstName String,
-	lastName String,
-	email String,
-	phoneNumber Integer
+entity ApplicationUser {
+	teamLead Boolean
+	gender Gender
+	image ImageBlob
 }
-entity Userprofile {
-	regionId Integer,
-	branchId Integer,
-	departmentId Integer,
-	divisionId Integer,
-	userStatus UserStatus
+enum Gender {
+MALE, FEMALE, OTHER
 }
-enum UserStatus {
-	SPRING, SUMMER, AUTUMN, WINTER
+entity Team{
+	name String required
+	code String
 }
 entity Region {
-	regionName String,
-	regionId Integer,
+	regionName String
     description String
 }
 entity Branch {
-	branchName String,
-	branchId Integer,
+	branchName String
 	description String
 }
 entity Department {
-	departmentName String required,
-	departmentId Integer,
+	departmentName String required
     description String
 }
 entity Division {
-	description String,
-	divisionId Integer,
+	description String
 	divisionName String
 }
 relationship OneToOne {
-	Task{AssignTask(title)} to AssignTask{Task}
+	ApplicationUser{internalUser} to User
 }
 relationship OneToMany {
-	Userprofile{UserprofileRegion} to Region{Userproifle(regionId)}
-	Userprofile{UserProfileDepartment} to Department{Userproifle(departmentId)}
-    Userprofile{UserProfileBranch} to Branch{Userproifle(branchId)}
-    Userprofile{UserProfileDivision} to Division{Userproifle(divisionId)}
-	Region{branch} to Branch{region(regionName)} , Branch to Department
+	User{UserRegion} to Region{User}
+	User{UserDepartment} to Department{User}
+    User{UserBranch} to Branch{User}
+    User{UserDivision} to Division{User}
+	Region{branch} to Branch{region(regionName)} 
+	Branch to Department
 	Department to Division
 	FraudKnowledgeManagement to FraudInvestigationReport {type(fraudType)}
+	Team{assignTask} to AssignTask{team(name)}
+	Task{assignTask} to AssignTask{task(title)}
 }
-/**
- * Many to many relationship.
- */
-// relationship ManyToMany {
-// 	FraudInvestigationReport to FraudKnowledgeManagement
-// }
-// relationship ManyToMany{
-//     Report to User
-// }
+relationship ManyToMany{
+	Team to User
+}
 // relationship OneToMany{
 // 	User{report} to Report
 // }
