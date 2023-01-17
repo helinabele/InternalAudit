@@ -26,7 +26,7 @@ entity FraudInvestigationReport {
     nameOfMembers String
     signature String
     annexes Blob
-	//publicationDate ZonedDateTime,
+	publicationDate Instant
     author String
 }
 entity FraudKnowledgeManagement{
@@ -88,15 +88,11 @@ relationship OneToMany {
 	Branch to Department
 	Department to Division
 	FraudKnowledgeManagement to FraudInvestigationReport {type(fraudType)}
-	Team{assignTask} to AssignTask{team(name)}
 	Task{assignTask} to AssignTask{task(title)}
+	Team{assignTask} to AssignTask{team(name)}
+	User to Team{User(login)}
 }
-relationship ManyToMany{
-	Team to User
-}
-// relationship OneToMany{
-// 	User{report} to Report
-// }
+
 paginate FraudInvestigationReport with infinite-scroll
 paginate Department with pagination
 service all with serviceImpl except Department
